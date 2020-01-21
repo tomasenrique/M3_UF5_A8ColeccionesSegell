@@ -106,7 +106,7 @@ public class Contenedor<E extends Comparable<E> & InterfaceDataAlfabetic> implem
     }
 
     // Para iterar la lista generica por un valor ingresado
-    public Iterator<E> iterarPorValor(int minVal) {
+    public Iterator<E> iterarPorValor(double minVal) {
         return new Iterator<E>() {
             int indice = 0; // servira para poder recorrer el arrayList
 

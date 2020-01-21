@@ -1,7 +1,7 @@
 package principal;
 
 import clases.Contenedor;
-import clases.Moneda;
+import clases.Segell;
 import excepciones.ElementoDuplicadoException;
 
 import java.util.ArrayList;
@@ -13,16 +13,15 @@ import static principal.Metodos.parseFecha;
 public class PrincipalMain {
     public static void main(String[] args) {
 
+        Segell m1 = new Segell("aa", "Moneda", 1.5, parseFecha("01/01/2000"));
+        Segell m2 = new Segell("bb", "billete", 2.5, parseFecha("02/02/2001"));
+        Segell m3 = new Segell("cc", "cosas", 3.5, parseFecha("03/03/2002"));
+        Segell m4 = new Segell("dd", "otros", 4.5, parseFecha("04/04/2003"));
+        Segell m5 = new Segell("ee", "no", 5.5, parseFecha("05/05/2004"));
+        Segell m6 = new Segell("ff", "Moneda", 2.4, parseFecha("06/06/2005"));
+        Segell m7 = new Segell("ff", "Moneda", 2.4, parseFecha("06/06/2005"));
 
-        Moneda m1 = new Moneda(5, "Moneda", "5 centimos de España", "Catedral de Santiago de Compostela", parseFecha("01/01/2000"));
-        Moneda m2 = new Moneda(10, "Moneda", "10 centimos de España", "Miguel de Cervantes", parseFecha("02/02/2010"));
-        Moneda m3 = new Moneda(20, "Moneda", "20 centimos de Andorra", "Iglesia románica de Santa Coloma", parseFecha("03/03/2008"));
-        Moneda m4 = new Moneda(50, "Moneda", "50 centimos de la Ciudad del Vaticano", "El papa Francisco", parseFecha("04/04/2017"));
-        Moneda m5 = new Moneda(1, "Moneda", "1 euro de Alemania", "El águila", parseFecha("05/05/2006"));
-        Moneda m6 = new Moneda(2, "Moneda", "2 euros de Irlanda", "El arpa céltica", parseFecha("03/03/2009"));
-        Moneda m7 = new Moneda(2, "Moneda", "2 euros de Irlanda", "El arpa céltica", parseFecha("03/03/2009"));
-
-        Contenedor<Moneda> contenedor = new Contenedor<>(); // se crea el contenedor generico
+        Contenedor<Segell> contenedor = new Contenedor<>(); // se crea el contenedor generico
         try { // se agrega las monedas al contenedor
             contenedor.guardarObjetoGenerico(m1);
             contenedor.guardarObjetoGenerico(m2);
@@ -58,10 +57,10 @@ public class PrincipalMain {
         System.out.println("========================================");
         System.out.println("MUESTRA RECORRIDA CON ITERADOR (ITERATOR)");
 
-        Iterator<Moneda> it1 = contenedor.iterator();
+        Iterator<Segell> it1 = contenedor.iterator();
         while (it1.hasNext()){
-            Moneda moneda = it1.next();
-            System.out.println(moneda);
+            Segell segell = it1.next();
+            System.out.println(segell);
         }
 
         System.out.println("========================================");
@@ -69,30 +68,21 @@ public class PrincipalMain {
 
         Scanner sc = new Scanner(System.in);
         System.out.print("Ingrese 'Valor' minimo de atributo para iterar los objetos: ");
-        int minVal = sc.nextInt();
+        double minVal = sc.nextDouble();
 
-        Iterator<Moneda> it2 = contenedor.iterarPorValor(minVal);
+        Iterator<Segell> it2 = contenedor.iterarPorValor(minVal);
         while (it2.hasNext()){
-            Moneda moneda = it2.next();
-            System.out.println(moneda);
+            Segell segell = it2.next();
+            System.out.println(segell);
         }
 
         System.out.println("========================================");
         System.out.println("USANDO METODO CREADO indexOf");
 
-        ArrayList<Moneda> otrasMonedas = contenedor.getGenerico();
-        for (int i = 0; i < otrasMonedas.size(); i++) {
-            System.out.println("La moneda de " + otrasMonedas.get(i).getValor() + " se encuentra en el indice: " +  contenedor.indexOf(otrasMonedas.get(i)));
+        ArrayList<Segell> otrasSegell = contenedor.getGenerico();
+        for (int i = 0; i < otrasSegell.size(); i++) {
+            System.out.println("La moneda de " + otrasSegell.get(i).getValor() + " se encuentra en el indice: " +  contenedor.indexOf(otrasSegell.get(i)));
         }
-
-        //Metodos.parseFecha()
-
-
-
-
-
-
-
 
     }
 }
